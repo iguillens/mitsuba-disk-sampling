@@ -38,5 +38,6 @@ We include two of the scenes displayed in the publication (`spheres` and `bunny_
    
 ## Notes
  - By default the disk solid angle routines work in double precision, although it is possible to configure them to work in single precision in `src/shapes/disk.cpp`.
+ - GUI is disabled by default to avoid compilation problems in modern systems.
   
 If you have any questions and/or bug reports, feel free to contact Ibón Guillén (ibon@unizar.es).
