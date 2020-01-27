@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<scene version="0.5.0">
+	<integrator type="voldirect">
+		<boolean name="hideEmitters" value="true"/>
+		<boolean name="multipleScatter" value="false"/>
+		<integer name="raySamples" value="1"/>
+		<integer name="emitterSamples" value="1"/>
+		<integer name="bsdfSamples" value="1"/>
+		<integer name="phaseSamples" value="1"/>
+		<integer name="maxDepth" value="2"/>
+	</integrator>
+
+	<medium type="homogeneous" id="fog">
+		<spectrum name="sigmaS" value="0.05"/>
+		<spectrum name="sigmaA" value="0.05"/>
+
+		<phase type="isotropic"/>
+	</medium>
+
+	<shape type="cube">
+		<transform name="toWorld">
+			<scale x="1000" y="1000" z="1000"/>
+		</transform>
+
+		<ref name="interior" id="fog"/>
+	</shape>
+
+	<sensor type="perspective">
+		<float name="fov" value="50"/>
+
+		<string name="fovAxis" value="x"/>
+
+		<transform name="toWorld">
+			<lookat target="0, 3, 2" origin="-14, 3, 2" up="0, 1, 0"/>
+		</transform>
+
+		<sampler type="ldsampler">
+			<integer name="sampleCount" value="256"/>
+			<integer name="dimension" value="5"/>
+		</sampler>
+
+		<film type="hdrfilm">
+			<integer name="height" value="480"/>
+			<integer name="width" value="640"/>
+
+			<boolean name="banner" value="false"/>
+			<boolean name="attachLog" value="false"/>
+
+			<rfilter type="box"/>
+		</film>
+
+		<ref id="fog"/>
+	</sensor>
+
+	<bsdf type="diffuse" id="white">
+		<spectrum name="reflectance" value="0.7" intent="reflectance"/>
+	</bsdf>
+
+	<bsdf type="diffuse" id="grey">
+		<spectrum name="reflectance" value="0.5" intent="reflectance"/>
+	</bsdf>
+
+	<shape type="obj">
+		<transform name="toWorld">
+			<rotate y="1" angle="-20"/>
+			<scale x="25" y="25" z="25"/>
+			<translate x="0" y="-0.85" z="0"/>
+		</transform>
+
+		<string name="filename" value="meshes/bunny.obj"/>
+
+		<ref id="white"/>
+	</shape>
+
+	<shape type="rectangle">
+		<transform name="toWorld">
+			<rotate x="1" angle="90"/>
+			<rotate z="1" angle="180"/>
+			<scale  x="1000"  y="1000"  z="1000"/>
+		</transform>
+
+		<ref id="grey"/>
+	</shape>
+
+	<shape type="disk">
+		<transform name="toWorld">
+			<rotate y="1" angle="175"/>
+			<rotate x="1" angle="-10"/>
+			<scale value="3.2"/>
+			<translate x="0" y="4.2" z="6"/>
+		</transform>
+
+		<string name="sampling" value="concentrictab"/>
+
+		<emitter type="area">
+			<spectrum name="radiance" value="25"/>
+			<boolean name="doubleSided" value="false"/>
+		</emitter>
+	</shape>
+</scene>
