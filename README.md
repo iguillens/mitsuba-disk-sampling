@@ -17,7 +17,7 @@ This code has been tested on Ubuntu 16.04 and 18.04. Original Mitsuba code works
    - `sudo apt install git scons libboost-all-dev libpng-dev libjpeg-dev libopenexr-dev libxerces-c-dev libeigen3-dev libfftw3-dev libglewmx-dev freeglut3-dev`
    - `cd mitsuba-disk-sampling/`
    - `cp build/config-linux.py config.py`
-   - `scons -j`
+   - `scons -j<number of cores>`
 
 ## Running
 After a successful compilation, it should be enough to add `mitsuba` to the `$PATH` by
