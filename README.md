@@ -21,10 +21,10 @@ This code has been tested on Ubuntu 16.04 and 18.04. Original Mitsuba code works
 
 ## Running
 After a successful compilation, it should be enough to add `mitsuba` to the `$PATH` by
-   - `$ source setpath.sh`
+   - `source setpath.sh`
 
 And run it
-   - `$ mitsuba <path to scene>.xml`
+   - `mitsuba <path to scene>.xml`
 
 ## Example scenes
 We include two of the scenes displayed in the publication (`spheres` and `bunny_media`). To test the different solid angle routines it is sufficient to change the `"sampling"` property of the disk area lights in the scenes with one of the following:
